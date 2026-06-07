@@ -1,12 +1,117 @@
 <!DOCTYPE html>
-  <html lang="ru">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo</title>
-  </head>
-  <body>
-    <h1>Hello from Netlify!</h1>
-    <p>Demo site deployed successfully.</p>
-  </body>
-  </html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HemoICU Monitor</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <!-- Sidebar -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="15" fill="#dc2626" stroke="#fff" stroke-width="1"/>
+          <path d="M16 8v8l5 3" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+          <path d="M8 16h2m12 0h2M16 6v2m0 16v-2" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <div class="logo-title">HemoICU</div>
+          <div class="logo-sub">Monitor</div>
+        </div>
+      </div>
+    </div>
+    <ul class="nav-menu">
+      <li class="nav-item active" data-page="dashboard">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        Панель мониторинга
+      </li>
+      <li class="nav-item" data-page="patients">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Реестр пациентов
+      </li>
+      <li class="nav-item" data-page="monitoring">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Мониторинг витальных
+      </li>
+      <li class="nav-item" data-page="laboratory">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
+        Лабораторный мониторинг
+      </li>
+      <li class="nav-item" data-page="scores">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Расчет рисков
+      </li>
+      <li class="nav-item" data-page="complications">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        Осложнения
+      </li>
+      <li class="nav-item" data-page="therapy">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        Лекарственная терапия
+      </li>
+      <li class="nav-item" data-page="transfusion">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="4"/></svg>
+        Трансфузии
+      </li>
+      <li class="nav-item" data-page="consilium">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 11l-4 4-2-2"/></svg>
+        Консилиум РВК
+      </li>
+      <li class="nav-item" data-page="rounds">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Обход заведующего
+      </li>
+      <li class="nav-item" data-page="analytics">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Аналитика
+      </li>
+    </ul>
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="user-avatar">ОР</div>
+        <div>
+          <div class="user-name" id="currentUserName">Ординатор</div>
+          <div class="user-role">Гематология</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <header class="top-bar">
+      <button class="menu-toggle" onclick="toggleSidebar()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <div class="top-bar-title" id="pageTitle">Панель мониторинга</div>
+      <div class="top-bar-actions">
+        <div class="date-time" id="dateTime"></div>
+        <button class="btn btn-primary" onclick="showAddPatientModal()">+ Пациент</button>
+      </div>
+    </header>
+
+    <div class="page-content" id="pageContent">
+      <!-- Dynamic content rendered here -->
+    </div>
+  </main>
+</div>
+
+<!-- Modals -->
+<div id="modalOverlay" class="modal-overlay" onclick="closeModal()"></div>
+<div id="modal" class="modal">
+  <div class="modal-header">
+    <h3 id="modalTitle">Заголовок</h3>
+    <button class="modal-close" onclick="closeModal()">×</button>
+  </div>
+  <div class="modal-body" id="modalBody"></div>
+</div>
+
+<!-- Alert Toast -->
+<div id="toast" class="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
